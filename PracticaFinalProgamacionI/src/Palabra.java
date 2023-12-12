@@ -38,6 +38,12 @@ public class Palabra {
         numeroCaracteres = 0;
     }
 
+    public Palabra(String dato) {
+
+        caracteres = dato.toCharArray();
+        numeroCaracteres = longitud(caracteres);
+    }
+
     //MÉTODOS FUNCIONALES que posibilitan la descripción del comportamiento
     //de un objeto Palabra
     //método de clase función booleano hayPalabras que responde a la pregunta
@@ -61,6 +67,15 @@ public class Palabra {
         }
     }
 
+    private int longitud(char [] array){
+        int longitud=0;
+
+        for (char c : array) {
+            longitud++;
+        }
+        return longitud;
+    }
+
     //método de clase procedimiento buscarPalabra que posibilita buscar un
     //objeto palabra en la secuencia de caracteres de entrada
     private static void buscarPalabra() throws Exception {
@@ -69,6 +84,13 @@ public class Palabra {
         while (caracter == ESPACIO) {
             caracter = LT.readChar();
         }
+    }
+
+    private boolean esAlfabeto(char caracter){
+        if ((int)caracter>=97 && (int)caracter<=122){
+            return true;
+        }
+        return false;
     }
 
     //método de objeto procedimiento readPalabra que posibilita la lectura

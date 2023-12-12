@@ -101,7 +101,6 @@ class Main{
         //Switch que determina la opcion que desea el usuario
         switch (opcion){
             case '1':
-
                 anadirContacto();
                 menuPrincipal();
                 break;
@@ -129,8 +128,6 @@ class Main{
     }
 
     private static void anadirContacto() throws Exception{
-        PalabraFicherosEscritura fichero = new PalabraFicherosEscritura(NOMBRE_FICHERO_AGENDA,false);
-        char[] datos;
         System.out.println("Introduce el campo #NOMBRE#");
         String nombre = LT.readLine();
         System.out.println("Introduce el campo #APELLIDOS#");
@@ -141,10 +138,9 @@ class Main{
         int tlf = LT.readInt();
 
         Contacto contacto = new Contacto(nombre,apellidos,tlf,email);
-        datos = contacto.toString().toCharArray();
+        Palabra lineaContacto = new Palabra(contacto.toString());
 
-
-        fichero.escritura();
-
+        PalabraFicherosEscritura fichero = new PalabraFicherosEscritura(NOMBRE_FICHERO_AGENDA);
+        fichero.escritura(lineaContacto);
     }
 }

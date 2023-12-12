@@ -1,49 +1,30 @@
 public class Contacto {
-    private String nombre;
-    private String apellidos;
+    private static final char SEPARADOR = '#';
+    private Palabra nombre;
+    private Palabra apellidos;
     private int telefono;
-    private String email;
-    public Contacto(){
-        nombre="";
-        apellidos = "";
-        telefono = -1;
-        email = "";
-    }
-
+    private Palabra email;
     public Contacto(String nom, String ap, int tlf, String mail){
-        nombre=nom;
-        apellidos = ap;
+        nombre = new Palabra(nom);
+        apellidos = new Palabra(ap);
         telefono = tlf;
-        email = mail;
+        email = new Palabra(mail);
     }
 
     public String toString(){
-        return nombre+'#'+apellidos+'#'+email+'#'+telefono+'#';
+        return nombre.toString() + SEPARADOR + apellidos.toString() + SEPARADOR + email.toString() + SEPARADOR + telefono + SEPARADOR;
     }
-    private void setNombre(String dato){
-        nombre = dato;
-    }
-    private void setApellidos(String dato){
-        apellidos = dato;
-    }
-    private void setTelefono(int dato){
-        telefono = dato;
-    }
-    private void setEmail(String dato){
-        email = dato;
-    }
-    public String getNombre(){
+    public Palabra getNombre(){
         return nombre;
     }
     private String getApellidos(){
-        return apellidos;
+        return apellidos.toString();
     }
     public int getTelefono(){
         return telefono;
     }
     private String getEmail(){
-        return email;
+        return email.toString();
     }
-
 
 }
